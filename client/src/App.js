@@ -6,6 +6,7 @@ import { Home } from "./lib/home/home";
 import { Login } from "./lib/login/login.js";
 import { Signup } from "./lib/signup/signup.js";
 import { Logout } from "./lib/logout/logout.js";
+import { ChefHat } from "./assets/icons/chef-hat.js";
 import API from "./utils/API.js";
 
 
@@ -18,10 +19,11 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="d-flex justify-content-between"> 
+        <div> 
           {
             API.isAuth()
-            ? (<div>
+            ? (<div  className="d-flex justify-content-between">
+                <ChefHat width="38"></ChefHat>
                 <Logout></Logout>
               </div>)
             : null
