@@ -1,10 +1,7 @@
 import React from "react";
 import "./home.css";
 
-export function Home(props) {
-  return (
-    <article>
-      <h1>HOME</h1>
-    </article>
-  );
-}
+export const Home = () =>
+  <article>
+    <h1>OUR RECIPES HOME</h1>
+  </article>
