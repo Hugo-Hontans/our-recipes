@@ -2,7 +2,7 @@
 import React from "react";
 import "./chef-hat.css";
 
-export const ChefHat = (props) => <svg fill="#f614b2" className="chef-hat" height={props.height} width={props.width} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+export const ChefHat = () => <svg fill="#f614b2" className="chef-hat" height="38" width="38" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 	 viewBox="0 0 436.807 436.807">
 <path id="XMLID_130_" d="M109.246,207.047c4.971,0,9,4.029,9,9s-4.029,9-9,9c-28.8,0-55.557-15.563-69.828-40.613
 	c-2.46-4.319-0.953-9.814,3.365-12.275c4.32-2.461,9.814-0.954,12.275,3.365C66.136,194.968,86.898,207.047,109.246,207.047z

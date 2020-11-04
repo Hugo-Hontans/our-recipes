@@ -11,3 +11,7 @@ text-decoration: inherit;
 .navbar {
     margin-bottom: 40px;
 }
+
+.auth-button {
+    margin: 20px 20px;
+}
