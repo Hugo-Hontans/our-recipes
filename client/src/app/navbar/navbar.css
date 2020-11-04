@@ -15,3 +15,9 @@ text-decoration: inherit;
 .auth-button {
     margin: 20px 20px;
 }
+
+span {
+    font-size: 20px;
+    color: white;
+    margin: 0;
+}

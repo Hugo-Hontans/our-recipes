@@ -22,7 +22,10 @@ class App extends React.Component {
         <section className="container">
           <div className="row justify-content-center">
             <Switch>
-              <Route exact path="/" component={Login}>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+              <Route exact path="/login" component={Login}>
                 {
                   API.isAuth()
                   ? <Redirect to="/home" />

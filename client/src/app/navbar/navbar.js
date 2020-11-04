@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 const disconnect = () => {
   API.logout();
-  window.location = "/";
+  window.location = "/login";
 }
 
 export const TopNavbar = () =>
@@ -19,15 +19,18 @@ export const TopNavbar = () =>
         Our recipes
       </Link>
     </Navbar.Brand>
-    {
-      API.isAuth()
-      ? <Button className="auth-button" onClick={disconnect}>
-          Log out
-        </Button>
-      : <Link to="/">
-          <Button className="auth-button">
-            Log in
+    <div>
+      {localStorage.getItem("name") ? <span>Hi {localStorage.getItem("name")}</span> : null}
+      {
+        API.isAuth()
+        ? <Button className="auth-button" onClick={disconnect}>
+            Log out
           </Button>
-        </Link>
-    }
+        : <Link to="/login">
+            <Button className="auth-button">
+              Log in
+            </Button>
+          </Link>
+      }
+    </div>
   </Navbar>
