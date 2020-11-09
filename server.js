@@ -43,6 +43,8 @@ app.use(function(req, res, next) {
 const router = express.Router();
 app.use("/ourrecipes/user", router);
 require(__dirname + "/controllers/userController")(router);
+app.use("/ourrecipes/recipe", router);
+require(__dirname + "/controllers/recipeController")(router);
 
 // Definition of listening port
 const port = 8800;
