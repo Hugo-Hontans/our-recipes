@@ -30,4 +30,8 @@ export default {
   logout: function() {
     localStorage.clear();
   },
+
+  getAllRecipes() {
+    return axios.get(`${burl}/ourrecipes/recipe/getall`, { headers });
+  }
 };
