@@ -18,6 +18,11 @@ export const TopNavbar = () =>
         <ChefHat></ChefHat>
         Our recipes
       </Link>
+      <Link to="/create" className="create">
+        <Button variant="success">
+          Create my recipe
+        </Button>
+      </Link>
     </Navbar.Brand>
     <div>
       {localStorage.getItem("name") ? <span>Hi {localStorage.getItem("name")}</span> : null}

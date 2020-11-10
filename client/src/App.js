@@ -7,6 +7,7 @@ import { Login } from "./lib/login/login";
 import { Signup } from "./lib/signup/signup";
 import { TopNavbar } from "./app/navbar/navbar";
 import API from "./utils/API";
+import { RecipeCreate } from "./app/recipe-create/recipe-create";
 
 
 class App extends React.Component {
@@ -41,6 +42,13 @@ class App extends React.Component {
               </Route>
               <Route path="/home">
                 <Home></Home>
+              </Route>
+              <Route path="/create">
+                {
+                  API.isAuth()
+                  ? <RecipeCreate></RecipeCreate>
+                  : <Redirect to="/login" />
+                } 
               </Route>
             </Switch>
           </div>
