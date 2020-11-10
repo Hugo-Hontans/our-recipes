@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(function(req, res, next) {
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
+    "X-Requested-With,content-type, UserName"
   );
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

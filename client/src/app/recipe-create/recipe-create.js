@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./recipe-create.css";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
+import API from "../../utils/API";
+import { wait } from "../../utils/helpers";
 
 const tagLabels = ['Starter', 'Dish', 'Dessert', 'Drink', 'Accompaniment', 'Vege', 'Vegan'];
 
 export const RecipeCreate = () => {
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isInError, setIsInError] = useState(false);
+  const [isSuccessed, setIsSuccessed] = useState(false);
 
   const handleChangeTitle = (event) => {
     setTitle(event.target.value);
@@ -20,11 +25,25 @@ export const RecipeCreate = () => {
     setTags(newTags);
   };
 
-  const create = () => {
-    console.log({
+  const create = async () => {
+    try {
+      if (isInError) setIsInError(false);
+      setIsSubmitting(true);
+      await API.createRecipe({
       title,
       tags
-    });
+      });
+      setIsSubmitting(false);
+      // Display success and reset form
+      setIsSuccessed(true);
+      await wait(3000);
+      setTitle('');
+      setIsSuccessed(false);
+    } catch {
+      // Display error
+      setIsInError(true);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -50,9 +69,15 @@ export const RecipeCreate = () => {
         </Form.Text>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={isSubmitting}>
         Create my recipe
       </Button>
+      {
+        isInError ? <Alert variant="danger">An error occured, please try again later.</Alert> : null
+      }
+      {
+        isSuccessed ? <Alert variant="success">Your recipe has been successfully saved.</Alert> : null
+      }
     </Form>
   )
 }

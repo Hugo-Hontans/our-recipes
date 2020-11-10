@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const recipeSchema = mongoose.Schema(
   {
+    userName: {
+      type: String,
+      required: true
+    },
     title: {
         type: String,
         required: true

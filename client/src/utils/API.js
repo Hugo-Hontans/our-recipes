@@ -2,6 +2,10 @@ import axios from "axios";
 const headers = {
   "Content-Type": "application/json"
 };
+const headersWithUserName = {
+  "Content-Type": "application/json",
+  "UserName": localStorage.getItem("name")
+};
 const burl = process.env.REACT_APP_URL || "http://localhost:8800";
 
 export default {
@@ -19,7 +23,7 @@ export default {
   },
   
   signup: function(send) {
-    return axios.post(`${burl}/ourrecipes/user/signup`, send, { headers: headers });
+    return axios.post(`${burl}/ourrecipes/user/signup`, send, { headers });
   },
 
 
@@ -33,5 +37,9 @@ export default {
 
   getAllRecipes() {
     return axios.get(`${burl}/ourrecipes/recipe/getall`, { headers });
-  }
+  },
+
+  createRecipe(recipe) {
+    return axios.post(`${burl}/ourrecipes/recipe/create`, recipe, { headers: headersWithUserName });
+  },
 };
