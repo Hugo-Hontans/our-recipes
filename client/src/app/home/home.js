@@ -29,7 +29,7 @@ export class Home extends React.Component {
   render() {
     return (
       <CardColumns>
-        {this.state.recipes.map((recipe, index) => <RecipeCard key={index} recipe={recipe} index={index}></RecipeCard>)}
+        {this.state.recipes.map((recipe, index) => <RecipeCard key={recipe._id} recipe={recipe} index={index}></RecipeCard>)}
       </CardColumns> 
     )
   }
