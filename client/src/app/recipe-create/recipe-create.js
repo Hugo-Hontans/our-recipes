@@ -15,6 +15,7 @@ export const RecipeCreate = () => {
   const [difficulty, setDifficulty] = useState('');
   const [cheap, setCheap] = useState('');
   const [quote, setQuote] = useState('');
+  const [ingredients, setIngredients] = useState(['']);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInError, setIsInError] = useState(false);
@@ -26,6 +27,25 @@ export const RecipeCreate = () => {
     // Add or remove tag of state
     newTags.includes(value) ? newTags.splice(newTags.indexOf(value), 1) : newTags.push(value);
     setTags(newTags);
+  };
+
+  const handleChangeIngredients = (event, index) => {
+    const value = event.target.value;
+    const newIngredients = ingredients;
+    newIngredients[index] = value;
+    setIngredients([...newIngredients]);
+  };
+
+  const addIngredient = () => {
+    const newIngredients = ingredients;
+    newIngredients.push('');
+    setIngredients([...newIngredients]);
+  };
+
+  const removeIngredient = (index) => {
+    const newIngredients = ingredients;
+    newIngredients.splice(index, 1);
+    setIngredients([...newIngredients]);
   };
 
   const create = async () => {
@@ -92,6 +112,22 @@ export const RecipeCreate = () => {
       <Form.Group controlId="cheap">
         <Form.Label>Cheap (1 to 3)</Form.Label>
         <Form.Control value={cheap} onChange={event => setCheap(event.target.value)} type="number" placeholder="Cheap" min="1" max="3" />
+      </Form.Group>
+
+      <Form.Group controlId="ingredients">
+        <Form.Label>List of ingredients</Form.Label>
+        <Button className="control" variant="primary" size="sm" onClick={() => addIngredient()}>+</Button>
+      {
+        ingredients.map((ingredient, index) =>
+          <div key={index}>
+            <Form.Label>Ingredient {index + 1}</Form.Label>
+            <div className="inline">
+              <Form.Control value={ingredient} onChange={event => handleChangeIngredients(event, index)} type="text" />
+              <Button variant="danger" size="sm" onClick={() => removeIngredient(index)}>X</Button>
+            </div>
+          </div>     
+        )
+      }
       </Form.Group>
 
       <Form.Group controlId="quote">

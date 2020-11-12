@@ -1,0 +1,11 @@
+.add {
+    margin-left: 20px;
+}
+
+.inline {
+    display: flex;
+}
+
+.inline, button {
+    margin-left: 5px;
+}
