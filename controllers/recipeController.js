@@ -17,8 +17,8 @@ async function createRecipe(req, res) {
     recipe.userName = req.headers.username;
     try {
         // Save recipe in DB
-        const recipeDate = new Recipe(recipe);
-        await recipeDate.save();
+        const recipeData = new Recipe(recipe);
+        await recipeData.save();
         return res.status(200).json({
           text: "Success",
         });
