@@ -73,8 +73,16 @@ export const RecipeCreate = () => {
       if (isInError) setIsInError(false);
       setIsSubmitting(true);
       await API.createRecipe({
-      title,
-      tags
+        title,
+        tags,
+        preparingTime,
+        bakingTime,
+        people,
+        difficulty,
+        cheap,
+        ingredients,
+        instructions,
+        quote
       });
       setIsSubmitting(false);
       // Display success and reset form
@@ -93,7 +101,7 @@ export const RecipeCreate = () => {
     <Form onSubmit={(event) => {create(); event.preventDefault();}}>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
-        <Form.Control value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
+        <Form.Control required value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
       </Form.Group>
 
       <Form.Group controlId="tags">
@@ -114,24 +122,24 @@ export const RecipeCreate = () => {
 
       <Form.Group controlId="time">
         <Form.Label>Preparing Time (minutes)</Form.Label>
-        <Form.Control value={preparingTime} onChange={event => setPreparingTime(event.target.value)} type="number" placeholder="Time to prepare" />
+        <Form.Control required value={preparingTime} onChange={event => setPreparingTime(event.target.value)} type="number" placeholder="Time to prepare" />
         <Form.Label>Baking Time (minutes)</Form.Label>
-        <Form.Control value={bakingTime} onChange={event => setBakingTime(event.target.value)} type="number" placeholder="Time to bake" />
+        <Form.Control required value={bakingTime} onChange={event => setBakingTime(event.target.value)} type="number" placeholder="Time to bake" />
       </Form.Group>
 
       <Form.Group controlId="people">
         <Form.Label>People</Form.Label>
-        <Form.Control value={people} onChange={event => setPeople(event.target.value)} type="number" placeholder="Number of people" />
+        <Form.Control required value={people} onChange={event => setPeople(event.target.value)} type="number" placeholder="Number of people" />
       </Form.Group>
 
       <Form.Group controlId="difficulty">
         <Form.Label>Difficulty (1 to 3)</Form.Label>
-        <Form.Control value={difficulty} onChange={event => setDifficulty(event.target.value)} type="number" placeholder="Difficulty" min="1" max="3" />
+        <Form.Control required value={difficulty} onChange={event => setDifficulty(event.target.value)} type="number" placeholder="Difficulty" min="1" max="3" />
       </Form.Group>
 
       <Form.Group controlId="cheap">
         <Form.Label>Cheap (1 to 3)</Form.Label>
-        <Form.Control value={cheap} onChange={event => setCheap(event.target.value)} type="number" placeholder="Cheap" min="1" max="3" />
+        <Form.Control required value={cheap} onChange={event => setCheap(event.target.value)} type="number" placeholder="Cheap" min="1" max="3" />
       </Form.Group>
 
       <Form.Group controlId="ingredients">
@@ -168,7 +176,7 @@ export const RecipeCreate = () => {
 
       <Form.Group controlId="quote">
         <Form.Label>My quote</Form.Label>
-        <Form.Control value={quote} onChange={event => setQuote(event.target.value)} type="text" placeholder="To taste with..." />
+        <Form.Control required value={quote} onChange={event => setQuote(event.target.value)} type="text" placeholder="To taste with..." />
       </Form.Group>
 
       <Button variant="primary" type="submit" disabled={isSubmitting}>
