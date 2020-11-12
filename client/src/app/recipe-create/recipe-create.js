@@ -16,6 +16,7 @@ export const RecipeCreate = () => {
   const [cheap, setCheap] = useState('');
   const [quote, setQuote] = useState('');
   const [ingredients, setIngredients] = useState(['']);
+  const [instructions, setInstructions] = useState(['']);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInError, setIsInError] = useState(false);
@@ -36,6 +37,13 @@ export const RecipeCreate = () => {
     setIngredients([...newIngredients]);
   };
 
+  const handleChangeInstructions = (event, index) => {
+    const value = event.target.value;
+    const newInstructions = instructions;
+    newInstructions[index] = value;
+    setInstructions([...newInstructions]);
+  };
+
   const addIngredient = () => {
     const newIngredients = ingredients;
     newIngredients.push('');
@@ -46,6 +54,18 @@ export const RecipeCreate = () => {
     const newIngredients = ingredients;
     newIngredients.splice(index, 1);
     setIngredients([...newIngredients]);
+  };
+
+  const addInstruction = () => {
+    const newInstructions = instructions;
+    newInstructions.push('');
+    setInstructions([...newInstructions]);
+  };
+
+  const removeInstruction = (index) => {
+    const newInstructions = instructions;
+    newInstructions.splice(index, 1);
+    setInstructions([...newInstructions]);
   };
 
   const create = async () => {
@@ -124,6 +144,22 @@ export const RecipeCreate = () => {
             <div className="inline">
               <Form.Control value={ingredient} onChange={event => handleChangeIngredients(event, index)} type="text" />
               <Button variant="danger" size="sm" onClick={() => removeIngredient(index)}>X</Button>
+            </div>
+          </div>     
+        )
+      }
+      </Form.Group>
+
+      <Form.Group controlId="instructions">
+        <Form.Label>Instructions to cook</Form.Label>
+        <Button className="control" variant="primary" size="sm" onClick={() => addInstruction()}>+</Button>
+      {
+        instructions.map((instruction, index) =>
+          <div key={index}>
+            <Form.Label>Instruction {index + 1}</Form.Label>
+            <div className="inline">
+              <Form.Control as="textarea" rows={2} value={instruction} onChange={event => handleChangeInstructions(event, index)} type="text" />
+              <Button variant="danger" size="sm" onClick={() => removeInstruction(index)}>X</Button>
             </div>
           </div>     
         )
