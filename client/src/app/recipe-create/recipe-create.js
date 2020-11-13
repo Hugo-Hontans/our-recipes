@@ -99,12 +99,12 @@ export const RecipeCreate = () => {
 
   return (
     <Form onSubmit={(event) => {create(); event.preventDefault();}}>
-      <Form.Group controlId="title">
+      <Form.Group controlId="title" className="bg-dark">
         <Form.Label>Title</Form.Label>
         <Form.Control required value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
       </Form.Group>
 
-      <Form.Group controlId="tags">
+      <Form.Group controlId="tags" className="bg-dark">
         <Form.Label>Tags</Form.Label>
         { tagLabels.map((label, index) =>
           <Form.Check
@@ -115,34 +115,29 @@ export const RecipeCreate = () => {
             onChange={handleChangeTag}
           />
         )}
-        <Form.Text className="text-muted">
+        <Form.Text>
           Choose one or mutiple tags.
         </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="time">
+      <Form.Group controlId="information" className="bg-dark">
         <Form.Label>Preparing Time (minutes)</Form.Label>
         <Form.Control required value={preparingTime} onChange={event => setPreparingTime(event.target.value)} type="number" placeholder="Time to prepare" />
+
         <Form.Label>Baking Time (minutes)</Form.Label>
         <Form.Control required value={bakingTime} onChange={event => setBakingTime(event.target.value)} type="number" placeholder="Time to bake" />
-      </Form.Group>
 
-      <Form.Group controlId="people">
         <Form.Label>People</Form.Label>
         <Form.Control required value={people} onChange={event => setPeople(event.target.value)} type="number" placeholder="Number of people" />
-      </Form.Group>
 
-      <Form.Group controlId="difficulty">
         <Form.Label>Difficulty (1 to 3)</Form.Label>
         <Form.Control required value={difficulty} onChange={event => setDifficulty(event.target.value)} type="number" placeholder="Difficulty" min="1" max="3" />
-      </Form.Group>
-
-      <Form.Group controlId="cheap">
+        
         <Form.Label>Cheap (1 to 3)</Form.Label>
         <Form.Control required value={cheap} onChange={event => setCheap(event.target.value)} type="number" placeholder="Cheap" min="1" max="3" />
       </Form.Group>
 
-      <Form.Group controlId="ingredients">
+      <Form.Group controlId="ingredients" className="bg-dark">
         <Form.Label>List of ingredients</Form.Label>
         <Button className="control" variant="primary" size="sm" onClick={() => addIngredient()}>+</Button>
       {
@@ -151,14 +146,14 @@ export const RecipeCreate = () => {
             <Form.Label>Ingredient {index + 1}</Form.Label>
             <div className="inline">
               <Form.Control value={ingredient} onChange={event => handleChangeIngredients(event, index)} type="text" />
-              <Button variant="danger" size="sm" onClick={() => removeIngredient(index)}>X</Button>
+              <Button className="remove" variant="danger" size="sm" onClick={() => removeIngredient(index)}>x</Button>
             </div>
           </div>     
         )
       }
       </Form.Group>
 
-      <Form.Group controlId="instructions">
+      <Form.Group controlId="instructions" className="bg-dark">
         <Form.Label>Instructions to cook</Form.Label>
         <Button className="control" variant="primary" size="sm" onClick={() => addInstruction()}>+</Button>
       {
@@ -167,27 +162,27 @@ export const RecipeCreate = () => {
             <Form.Label>Instruction {index + 1}</Form.Label>
             <div className="inline">
               <Form.Control as="textarea" rows={2} value={instruction} onChange={event => handleChangeInstructions(event, index)} type="text" />
-              <Button variant="danger" size="sm" onClick={() => removeInstruction(index)}>X</Button>
+              <Button className="remove" variant="danger" size="sm" onClick={() => removeInstruction(index)}>x</Button>
             </div>
           </div>     
         )
       }
       </Form.Group>
 
-      <Form.Group controlId="quote">
+      <Form.Group controlId="quote" className="bg-dark">
         <Form.Label>My quote</Form.Label>
         <Form.Control required value={quote} onChange={event => setQuote(event.target.value)} type="text" placeholder="To taste with..." />
       </Form.Group>
 
-      <Button variant="primary" type="submit" disabled={isSubmitting}>
-        Create my recipe
-      </Button>
       {
         isInError ? <Alert variant="danger">An error occured, please try again later.</Alert> : null
       }
       {
         isSuccessed ? <Alert variant="success">Your recipe has been successfully saved.</Alert> : null
       }
+      <Button className="create" variant="primary" type="submit" disabled={isSubmitting}>
+        Create my recipe
+      </Button>
     </Form>
   )
 }

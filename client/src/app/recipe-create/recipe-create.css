@@ -1,4 +1,4 @@
-.add {
+.control {
     margin-left: 20px;
 }
 
@@ -6,6 +6,23 @@
     display: flex;
 }
 
-.inline, button {
+.remove {
     margin-left: 5px;
+    height: 31px;
+}
+
+.form-group {
+    border: 1px solid #343a40;
+    padding: 16px;
+    border-radius: 20px;
+    background-color: #FEF9FF;
+    color: white;
+}
+
+.create {
+    margin-bottom: 40px;
+}
+
+.form-text {
+    color: #DDDDDD;
 }
