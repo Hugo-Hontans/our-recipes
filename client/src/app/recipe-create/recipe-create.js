@@ -99,12 +99,12 @@ export const RecipeCreate = () => {
 
   return (
     <Form onSubmit={(event) => {create(); event.preventDefault();}}>
-      <Form.Group controlId="title" className="bg-dark">
+      <Form.Group controlId="title" className="bg-dark group">
         <Form.Label>Title</Form.Label>
         <Form.Control required value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
       </Form.Group>
 
-      <Form.Group controlId="tags" className="bg-dark">
+      <Form.Group controlId="tags" className="bg-dark group">
         <Form.Label>Tags</Form.Label>
         { tagLabels.map((label, index) =>
           <Form.Check
@@ -120,7 +120,7 @@ export const RecipeCreate = () => {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="information" className="bg-dark">
+      <Form.Group controlId="information" className="bg-dark group">
         <Form.Label>Preparing Time (minutes)</Form.Label>
         <Form.Control required value={preparingTime} onChange={event => setPreparingTime(event.target.value)} type="number" placeholder="Time to prepare" />
 
@@ -137,7 +137,7 @@ export const RecipeCreate = () => {
         <Form.Control required value={cheap} onChange={event => setCheap(event.target.value)} type="number" placeholder="Cheap" min="1" max="3" />
       </Form.Group>
 
-      <Form.Group controlId="ingredients" className="bg-dark">
+      <Form.Group controlId="ingredients" className="bg-dark group">
         <Form.Label>List of ingredients</Form.Label>
         <Button className="control" variant="primary" size="sm" onClick={() => addIngredient()}>+</Button>
       {
@@ -153,7 +153,7 @@ export const RecipeCreate = () => {
       }
       </Form.Group>
 
-      <Form.Group controlId="instructions" className="bg-dark">
+      <Form.Group controlId="instructions" className="bg-dark group">
         <Form.Label>Instructions to cook</Form.Label>
         <Button className="control" variant="primary" size="sm" onClick={() => addInstruction()}>+</Button>
       {
@@ -169,7 +169,7 @@ export const RecipeCreate = () => {
       }
       </Form.Group>
 
-      <Form.Group controlId="quote" className="bg-dark">
+      <Form.Group controlId="quote" className="bg-dark group">
         <Form.Label>My quote</Form.Label>
         <Form.Control required value={quote} onChange={event => setQuote(event.target.value)} type="text" placeholder="To taste with..." />
       </Form.Group>
@@ -180,7 +180,7 @@ export const RecipeCreate = () => {
       {
         isSuccessed ? <Alert variant="success">Your recipe has been successfully saved.</Alert> : null
       }
-      <Button variant="primary" type="submit" disabled={isSubmitting}>
+      <Button className="create" variant="primary" type="submit" disabled={isSubmitting}>
         Create my recipe
       </Button>
     </Form>

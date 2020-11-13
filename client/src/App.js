@@ -53,7 +53,11 @@ class App extends React.Component {
             </Switch>
           </div>
         </section>
-        <Footer></Footer>
+        {
+          API.isAuth()
+          ? <Footer></Footer>
+          : null
+        }
       </Router>
     );
   }

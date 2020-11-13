@@ -11,7 +11,7 @@
     height: 31px;
 }
 
-.form-group {
+.group {
     border: 1px solid #343a40;
     padding: 16px;
     border-radius: 20px;
@@ -21,4 +21,8 @@
 
 .form-text {
     color: #DDDDDD;
+}
+
+.create {
+    margin-bottom: 40px;
 }

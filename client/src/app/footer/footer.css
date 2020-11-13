@@ -2,12 +2,18 @@ article {
     color: white;
     padding: 20px 20px;
     margin-top: 40px;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Fixed height for footer */
+    height: 90px;
 }
 
 div {
     text-align: end;
 }
 
-div > a{
+div > a {
     text-decoration: underline;
 }
