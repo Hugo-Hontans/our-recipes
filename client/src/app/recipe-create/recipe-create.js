@@ -180,7 +180,7 @@ export const RecipeCreate = () => {
       {
         isSuccessed ? <Alert variant="success">Your recipe has been successfully saved.</Alert> : null
       }
-      <Button className="create" variant="primary" type="submit" disabled={isSubmitting}>
+      <Button variant="primary" type="submit" disabled={isSubmitting}>
         Create my recipe
       </Button>
     </Form>

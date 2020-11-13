@@ -1,0 +1,13 @@
+article {
+    color: white;
+    padding: 20px 20px;
+    margin-top: 40px;
+}
+
+div {
+    text-align: end;
+}
+
+div > a{
+    text-decoration: underline;
+}

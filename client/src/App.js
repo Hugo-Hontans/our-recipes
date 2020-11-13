@@ -8,7 +8,7 @@ import { Signup } from "./lib/signup/signup";
 import { TopNavbar } from "./app/navbar/navbar";
 import API from "./utils/API";
 import { RecipeCreate } from "./app/recipe-create/recipe-create";
-
+import { Footer } from "./app/footer/footer";
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +53,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </section>
+        <Footer></Footer>
       </Router>
     );
   }
