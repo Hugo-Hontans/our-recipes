@@ -7,15 +7,18 @@ import { Link } from "react-router-dom";
 export class Signup extends React.Component {
   state = {
     name: "",
+    email: "",
     password: "",
     cpassword: ""
   };
+
   send = async () => {
-    const { name, password, cpassword } = this.state;
+    const { name, email, password, cpassword } = this.state;
     if (!name || name.length === 0) return;
+    if (!email || email.length === 0) return;
     if (!password || password.length === 0 || password !== cpassword) return;
     try {
-      const { data } = await API.signup({ name, password });
+      const { data } = await API.signup({ name, email, password });
       localStorage.setItem("token", data.token);
       localStorage.setItem("name", data.name);
       window.location = "/home";
@@ -23,13 +26,15 @@ export class Signup extends React.Component {
       console.error(error);
     }
   };
+
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     });
   };
+
   render() {
-    const { name, password, cpassword } = this.state;
+    const { name, email, password, cpassword } = this.state;
     return (
       <form onSubmit={(event) => {this.send(); event.preventDefault();}}>
         <FormGroup className="col-8 col-md-12 center" controlId="name">
@@ -39,6 +44,18 @@ export class Signup extends React.Component {
             autoFocus
             type="text"
             value={name}
+            required
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup className="col-8 col-md-12 center" controlId="email">
+          <FormLabel>Email</FormLabel>
+          <FormControl
+            autoComplete="email"
+            autoFocus
+            type="email"
+            value={email}
+            required
             onChange={this.handleChange}
           />
         </FormGroup>
@@ -49,6 +66,7 @@ export class Signup extends React.Component {
             value={password}
             onChange={this.handleChange}
             type="password"
+            required
           />
         </FormGroup>
         <FormGroup className="col-8 col-md-12 center" controlId="cpassword">
@@ -58,6 +76,7 @@ export class Signup extends React.Component {
             value={cpassword}
             onChange={this.handleChange}
             type="password"
+            required
           />
         </FormGroup>
         <div className="d-flex justify-content-center">

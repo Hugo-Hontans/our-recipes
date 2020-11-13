@@ -2,9 +2,9 @@ const User = require("../schema/schemaUser.js");
 const passwordHash = require("password-hash");
 
 async function signup(req, res) {
-  const { password, name } = req.body;
-  if (!name || !password) {
-    // Name or password null or undefined
+  const { password, email, name } = req.body;
+  if (!name || !email || !password) {
+    // Name, email or password null or undefined
     return res.status(400).json({
       text: "Invalid request"
     });
@@ -12,16 +12,25 @@ async function signup(req, res) {
   // Creation of object User with hashed password
   const user = {
     name,
+    email,
     password: passwordHash.generate(password)
   };
   // Check if user already exists in DB
   try {
-    const findUser = await User.findOne({
+    const findUserWithName = await User.findOne({
       name
     });
-    if (findUser) {
+    if (findUserWithName) {
       return res.status(400).json({
         text: "The user already exists"
+      });
+    }
+    const findUserWithEmail = await User.findOne({
+      email
+    });
+    if (findUserWithEmail) {
+      return res.status(400).json({
+        text: "This email is already taken"
       });
     }
   } catch (error) {
