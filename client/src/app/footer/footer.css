@@ -10,10 +10,10 @@ article {
     height: 90px;
 }
 
-div {
+.footer-group {
     text-align: end;
 }
 
-div > a {
+.footer-group > a {
     text-decoration: underline;
 }

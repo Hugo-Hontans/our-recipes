@@ -98,7 +98,7 @@ export const RecipeCreate = () => {
   };
 
   return (
-    <Form onSubmit={(event) => {create(); event.preventDefault();}}>
+    <Form className="form" onSubmit={(event) => {create(); event.preventDefault();}}>
       <Form.Group controlId="title" className="bg-dark group">
         <Form.Label>Title</Form.Label>
         <Form.Control required value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
