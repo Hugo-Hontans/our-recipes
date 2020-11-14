@@ -12,30 +12,31 @@ const disconnect = () => {
 }
 
 export const TopNavbar = () =>
-  <Navbar bg="dark" variant="dark" className="navbar justify-content-between">
+  <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" className="navbar justify-content-between">
     <Navbar.Brand>
-      <Link to="/home">
+      <Link className="link-home" to="/home">
         <ChefHat></ChefHat>
         Our recipes
       </Link>
-      <Link to="/create" className="create">
-        <Button variant="success">
-          Create my recipe
-        </Button>
-      </Link>
     </Navbar.Brand>
-    <div>
-      {localStorage.getItem("name") ? <span>Hi {localStorage.getItem("name")}</span> : null}
-      {
-        API.isAuth()
-        ? <Button className="auth-button" onClick={disconnect}>
-            Log out
-          </Button>
-        : <Link to="/login">
-            <Button className="auth-button">
-              Log in
+    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Collapse id="responsive-navbar-nav" className="row justify-content-end align-items-center">
+        { localStorage.getItem("name") ? <p>Hi {localStorage.getItem("name")}</p> : null }
+        <Link to="/create">
+            <Button variant="success" className="action-button">
+              Create my recipe
             </Button>
-          </Link>
-      }
-    </div>
+        </Link>
+        {
+          API.isAuth()
+          ? <Button className="action-button" onClick={disconnect}>
+              Log out
+            </Button>
+          : <Link to="/login">
+              <Button className="action-button">
+                Log in
+              </Button>
+            </Link>
+        }
+    </Navbar.Collapse>
   </Navbar>
