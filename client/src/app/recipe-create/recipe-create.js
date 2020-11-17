@@ -17,6 +17,7 @@ export const RecipeCreate = () => {
   const [quote, setQuote] = useState('');
   const [ingredients, setIngredients] = useState(['']);
   const [instructions, setInstructions] = useState(['']);
+  const [image, setImage] = useState(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInError, setIsInError] = useState(false);
@@ -68,10 +69,20 @@ export const RecipeCreate = () => {
     setInstructions([...newInstructions]);
   };
 
+  const uploadImage = async () => {
+    const formData = new FormData();
+    formData.append('image', image);
+    return API.uploadImage(formData);
+  }
+
   const create = async () => {
     try {
       if (isInError) setIsInError(false);
       setIsSubmitting(true);
+
+      const res =  await uploadImage();
+      const imageId = res.data._id;
+
       await API.createRecipe({
         title,
         tags,
@@ -82,8 +93,10 @@ export const RecipeCreate = () => {
         cheap,
         ingredients,
         instructions,
-        quote
+        quote,
+        imageId
       });
+
       setIsSubmitting(false);
       // Display success and reset form
       setIsSuccessed(true);
@@ -102,6 +115,11 @@ export const RecipeCreate = () => {
       <Form.Group controlId="title" className="bg-dark group">
         <Form.Label>Title</Form.Label>
         <Form.Control required value={title} onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" />
+      </Form.Group>
+
+      <Form.Group controlId="image" className="bg-dark group">
+        <Form.Label>Picture</Form.Label>
+        <Form.Control onChange={event => setImage(event.target.files[0])} type="file" />
       </Form.Group>
 
       <Form.Group controlId="tags" className="bg-dark group">

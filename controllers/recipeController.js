@@ -20,7 +20,7 @@ async function createRecipe(req, res) {
         const recipeData = new Recipe(recipe);
         await recipeData.save();
         return res.status(200).json({
-          text: "Success",
+          text: "Success"
         });
       } catch (error) {
         return res.status(500).json({ error });

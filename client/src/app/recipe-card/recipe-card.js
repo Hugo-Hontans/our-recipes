@@ -2,11 +2,15 @@ import React from "react";
 import "./recipe-card.css";
 import { Card, Badge } from "react-bootstrap";
 import cutleryImg from '../../assets/images/cutlery.jpg';
-
+import { recipeImageUrl } from '../../utils/API';
 
 export const RecipeCard = (props) =>
   <Card bg="dark" text="white" style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={cutleryImg} alt="cutlery" />
+    {
+      props.recipe.imageId
+      ? <Card.Img height="200" variant="top" src={`${recipeImageUrl}/${props.recipe.imageId}`} alt="recipe ready to eat" />
+      : <Card.Img height="200" variant="top" src={cutleryImg} alt="cutlery" />
+    }
     <Card.ImgOverlay>
       { props.recipe.tags.map((tag, index) => 
           <Badge pill variant="info" key={index}>

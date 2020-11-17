@@ -45,6 +45,9 @@ const recipeSchema = mongoose.Schema(
     quote: {
       type: String,
       required: true
+    },
+    imageId: {
+      type: String
     }
   },
   { timestamps: { createdAt: "created_at" } }

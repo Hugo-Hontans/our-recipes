@@ -7,6 +7,7 @@ const headersWithUserName = {
   "UserName": localStorage.getItem("name")
 };
 const burl = process.env.REACT_APP_URL || "http://localhost:8800";
+export const recipeImageUrl = `${burl}/ourrecipes/recipeimage`;
 
 export default {
   login: function(name, password) {
@@ -41,5 +42,10 @@ export default {
 
   createRecipe(recipe) {
     return axios.post(`${burl}/ourrecipes/recipe/create`, recipe, { headers: headersWithUserName });
+  },
+
+  uploadImage(formData) {
+    const headersFile = { 'Content-Type': 'multipart/form-data' };
+    return axios.post(`${burl}/ourrecipes/recipeimage/upload`, formData, { headers: headersFile });
   },
 };
