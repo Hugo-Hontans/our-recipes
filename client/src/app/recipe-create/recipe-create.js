@@ -22,6 +22,7 @@ export const RecipeCreate = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInError, setIsInError] = useState(false);
   const [isSuccessed, setIsSuccessed] = useState(false);
+  const [imageTypeError, setImageTypeError] = useState(false);
 
   const handleChangeTag = (event) => {
     const value = event.target.value;
@@ -43,6 +44,15 @@ export const RecipeCreate = () => {
     const newInstructions = instructions;
     newInstructions[index] = value;
     setInstructions([...newInstructions]);
+  };
+
+  const handleChangeImage = (event) => {
+    if (event.target.files[0].type !== 'image/png') {
+      setImageTypeError(true);
+      return;
+    };
+    setImage(event.target.files[0]);
+    setImageTypeError(false);
   };
 
   const addIngredient = () => {
@@ -70,6 +80,7 @@ export const RecipeCreate = () => {
   };
 
   const uploadImage = async () => {
+    if (image.type !== 'image/png') throw new Error('Image type not allowed.');
     const formData = new FormData();
     formData.append('image', image);
     return API.uploadImage(formData);
@@ -119,7 +130,10 @@ export const RecipeCreate = () => {
 
       <Form.Group controlId="image" className="bg-dark group">
         <Form.Label>Picture</Form.Label>
-        <Form.Control onChange={event => setImage(event.target.files[0])} type="file" />
+        <Form.Control onChange={event => handleChangeImage(event)} type="file" />
+        {
+          imageTypeError ? <Alert variant="danger">Only .png are allowed.</Alert> : null
+        }
       </Form.Group>
 
       <Form.Group controlId="tags" className="bg-dark group">
