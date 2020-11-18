@@ -9,6 +9,7 @@ import { TopNavbar } from "./app/navbar/navbar";
 import API from "./utils/API";
 import { RecipeCreate } from "./app/recipe-create/recipe-create";
 import { Footer } from "./app/footer/footer";
+import { RecipeView } from "./app/recipe-view/recipe-view";
 
 class App extends React.Component {
   constructor(props) {
@@ -42,6 +43,9 @@ class App extends React.Component {
               </Route>
               <Route path="/home">
                 <Home></Home>
+              </Route>
+              <Route path="/view/:id">
+                <RecipeView></RecipeView>
               </Route>
               <Route path="/create">
                 {
