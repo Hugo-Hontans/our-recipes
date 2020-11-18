@@ -27,7 +27,20 @@ async function createRecipe(req, res) {
       }
 }
 
+async function getRecipe(req, res) {
+    try {
+        const recipe = await Recipe.findOne({_id: req.params.id});
+        return res.status(200).json({
+            text: "Success",
+            recipe
+        });
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+}
+
 module.exports = function (app) {
     app.get('/getall', getAllRecipes);
     app.post('/create', createRecipe);
+    app.get('/getrecipe/:id', getRecipe);
 }

@@ -31,6 +31,6 @@ const getImage = ((req, res, next) => {
 })
 
 module.exports = function (app) {
-    app.get('/:id', getImage);
+    app.get('/getimage/:id', getImage);
     app.post('/upload', upload.array('image', 5), uploadImage);
 }

@@ -7,7 +7,7 @@ const headersWithUserName = {
   "UserName": localStorage.getItem("name")
 };
 const burl = process.env.REACT_APP_URL || "http://localhost:8800";
-export const recipeImageUrl = `${burl}/ourrecipes/recipeimage`;
+export const recipeImageUrl = `${burl}/ourrecipes/recipeimage/getimage`;
 
 export default {
   login: function(name, password) {
@@ -38,6 +38,10 @@ export default {
 
   getAllRecipes() {
     return axios.get(`${burl}/ourrecipes/recipe/getall`, { headers });
+  },
+
+  getRecipe(id) {
+    return axios.get(`${burl}/ourrecipes/recipe/getrecipe/${id}`);
   },
 
   createRecipe(recipe) {
