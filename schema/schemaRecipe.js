@@ -15,11 +15,11 @@ const recipeSchema = mongoose.Schema(
         required: true
     },
     preparingTime: {
-      type: String,
+      type: Number,
       required: true
     },
     bakingTime: {
-      type: String,
+      type: Number,
       required: true
     },
     people: {
