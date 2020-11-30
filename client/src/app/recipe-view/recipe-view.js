@@ -9,11 +9,15 @@ export const RecipeView = () => {
 
   useEffect(() => {
     async function getRecipe() {
-      const res = await API.getRecipe(id);
-      setRecipe(res.data.recipe);
+      try {
+        const res = await API.getRecipe(id);
+        setRecipe(res.data.recipe);
+      } catch (err) {
+        console.error(err);
+      }
     }
     getRecipe();
-  }, []);
+  }, [id]);
 
   return (
     <section>
