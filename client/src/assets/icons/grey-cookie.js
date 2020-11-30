@@ -1,8 +1,8 @@
 
 import React from "react";
-import "./cookie.css";
+import "./grey-cookie.css";
 
-export const Cookie = () => <svg version="1.1" width="20" height="20" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+export const GreyCookie = () => <svg fill="#FFFFFF" version="1.1" width="20" height="20" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 viewBox="0 0 416.991 416.991">
 <g>
 <g>

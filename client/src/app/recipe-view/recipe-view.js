@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import API, { recipeImageUrl } from "../../utils/API";
 import cutleryImg from '../../assets/images/cutlery.jpg';
 import { Cookie } from "../../assets/icons/cookie";
+import { GreyCookie } from "../../assets/icons/grey-cookie";
+import { PiggyBank } from "../../assets/icons/piggy-bank";
 
 export const RecipeView = () => {
   const { id } = useParams();
@@ -36,8 +38,12 @@ export const RecipeView = () => {
               <div className="row">
                 <p className="col-sm">Time: {recipe.preparingTime + recipe.bakingTime} min</p>
                 <p className="col-sm">People: {recipe.people}</p>
-                <p className="col-sm">Difficulty: {recipe.difficulty}<Cookie></Cookie></p>
-                <p className="col-sm">Cheap: {recipe.cheap}</p>
+                <p className="col-sm">Difficulty: <span>{<Cookie></Cookie>}
+                  {recipe.difficulty > 1 ? <Cookie></Cookie> : <GreyCookie></GreyCookie>}
+                  {recipe.difficulty > 2 ? <Cookie></Cookie> : <GreyCookie></GreyCookie>}</span></p>
+                <p className="col-sm">Cheap: <PiggyBank color="#f614b2"></PiggyBank>
+                  <PiggyBank color={recipe.cheap > 1 ? '#f614b2' : '#ffccf0 '}></PiggyBank>
+                  <PiggyBank color={recipe.cheap > 2 ? '#f614b2' : '#ffccf0 '}></PiggyBank></p>
               </div>
             </article>
           </div>
