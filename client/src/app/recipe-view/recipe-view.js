@@ -3,6 +3,7 @@ import "./recipe-view.css";
 import { useParams } from "react-router-dom";
 import API, { recipeImageUrl } from "../../utils/API";
 import cutleryImg from '../../assets/images/cutlery.jpg';
+import { Cookie } from "../../assets/icons/cookie";
 
 export const RecipeView = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ export const RecipeView = () => {
               <div className="row">
                 <p className="col-sm">Time: {recipe.preparingTime + recipe.bakingTime} min</p>
                 <p className="col-sm">People: {recipe.people}</p>
-                <p className="col-sm">Difficulty: {recipe.difficulty}</p>
+                <p className="col-sm">Difficulty: {recipe.difficulty}<Cookie></Cookie></p>
                 <p className="col-sm">Cheap: {recipe.cheap}</p>
               </div>
             </article>
