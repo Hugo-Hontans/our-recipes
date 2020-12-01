@@ -6,6 +6,7 @@ import cutleryImg from '../../assets/images/cutlery.jpg';
 import { Cookie } from "../../assets/icons/cookie";
 import { GreyCookie } from "../../assets/icons/grey-cookie";
 import { PiggyBank } from "../../assets/icons/piggy-bank";
+import { Badge } from "react-bootstrap";
 
 export const RecipeView = () => {
   const { id } = useParams();
@@ -29,6 +30,13 @@ export const RecipeView = () => {
         recipe
         ? <div className="recipe-view">
             <h1 className="recipe-title">{recipe.title}</h1>
+            <div className="badges">
+              { recipe.tags.map((tag, index) => 
+              <Badge pill variant="info" key={index}>
+                {tag}
+              </Badge>
+              )}
+              </div>
             {
               recipe.imageId
               ? <img className="image-view" src={`${recipeImageUrl}/${recipe.imageId}`} alt="recipe ready to eat" />
@@ -46,6 +54,10 @@ export const RecipeView = () => {
                   <PiggyBank color={recipe.cheap > 2 ? '#f614b2' : '#ffccf0 '}></PiggyBank></p>
               </div>
             </article>
+            <div className="quote-group">
+              <p className="quote-autor">Created by <span className="autor">{recipe.userName}</span>.</p>
+              <p className="quote"><span className="quote-mark">"</span> {recipe.quote} <span className="quote-mark">"</span></p>
+            </div>
           </div>
         : <div>Loading...</div>
       }

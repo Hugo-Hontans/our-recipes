@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+.badges {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
 .recipe-title {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -12,14 +17,46 @@
     height: 150px;
 }
 
+.info-group {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.quote-group {
+    margin: 20px auto 40px auto;
+    width: 200px;
+    border: 1px solid #ffccf0;
+    border-radius: 20px;
+}
+
+.quote-autor {
+    margin-top: 16px;
+}
+
+.autor {
+    font-style: italic;
+}
+
+.quote {
+    font-style: italic;
+    overflow-wrap: break-word;
+    margin: 0 16px 16px 16px;
+}
+
+.quote-mark {
+    color: #f614b2;
+    font-weight: bold;
+}
+
 @media (min-width: 576px) {
     .image-view {
         height: 400px;
         min-width: 650px;
     }
-}
-
-.info-group {
-    margin-top: 40px;
-    text-align: center;
+    .quote-group {
+        margin: 20px auto 40px auto;
+        width: 500px;
+        border: 1px solid #ffccf0;
+        border-radius: 20px;
+    }
 }
