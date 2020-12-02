@@ -20,7 +20,7 @@ export const TopNavbar = () =>
       </Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    <Navbar.Collapse id="responsive-navbar-nav" className="row justify-content-end align-items-center">
+    <Navbar.Collapse id="responsive-navbar-nav" className="row-sm justify-content-end align-items-center">
         { localStorage.getItem("name") ? <p className="name">Hi {localStorage.getItem("name")}</p> : null }
         <Link to="/create">
             <Button variant="success" className="action-button">
