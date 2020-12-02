@@ -37,11 +37,13 @@ export const RecipeView = () => {
               </Badge>
               )}
               </div>
+
             {
               recipe.imageId
               ? <img className="image-view" src={`${recipeImageUrl}/${recipe.imageId}`} alt="recipe ready to eat" />
               : <img className="image-view" src={cutleryImg} alt="cutlery" />
             }
+
             <article className="container info-group">
               <div className="row">
                 <p className="col-sm">Time: {recipe.preparingTime + recipe.bakingTime} min</p>
@@ -54,6 +56,19 @@ export const RecipeView = () => {
                   <PiggyBank color={recipe.cheap > 2 ? '#f614b2' : '#ffccf0 '}></PiggyBank></p>
               </div>
             </article>
+
+            <article>
+              <h2 className="ingredients">Ingredients</h2>
+              { recipe.ingredients.map((ingredient, index) => <p key={index}>{ingredient}</p>) }
+            </article>
+
+            <article>
+              <h2 className="ingredients instructions">Instructions</h2>
+                <h5 className="preparing-time"><span className="bold-time">Preparing time:</span> {recipe.preparingTime} min</h5>
+                <h5 className="baking-time"><span className="bold-time">Baking time:</span> {recipe.bakingTime} min</h5>
+              { recipe.instructions.map((instruction, index) => <p className="instruction" key={index}><span className="instruction-number">{index + 1}.</span> {instruction}</p>) }
+            </article>
+            
             <div className="quote-group">
               <p className="quote-autor">Created by <span className="autor">{recipe.userName}</span>.</p>
               <p className="quote"><span className="quote-mark">"</span> {recipe.quote} <span className="quote-mark">"</span></p>

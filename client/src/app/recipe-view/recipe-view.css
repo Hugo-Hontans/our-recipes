@@ -23,7 +23,7 @@
 }
 
 .quote-group {
-    margin: 20px auto 40px auto;
+    margin: 40px auto 40px auto;
     width: 200px;
     border: 1px solid #ffccf0;
     border-radius: 20px;
@@ -48,15 +48,52 @@
     font-weight: bold;
 }
 
+.ingredients {
+    margin-top: 20px;
+    color: #f614b2;
+}
+
+.instructions {
+    margin-top: 36px;
+}
+
+.bold-time {
+    font-weight: bold;
+}
+
+.preparing-time {
+    margin-top: 20px;
+}
+
+.baking-time {
+    margin-bottom: 20px;
+}
+
+.instruction {
+    margin: auto;
+    width: 200px;
+}
+
+.instruction-number {
+    color: #f614b2;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 @media (min-width: 576px) {
     .image-view {
         height: 400px;
         min-width: 650px;
     }
     .quote-group {
-        margin: 20px auto 40px auto;
+        margin: 40px auto 40px auto;
         width: 500px;
         border: 1px solid #ffccf0;
         border-radius: 20px;
+    }
+    .instruction {
+        margin-left: 120px;
+        text-align: left;
+        width: 500px;
     }
 }
