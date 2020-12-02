@@ -91,8 +91,13 @@ export const RecipeCreate = () => {
       if (isInError) setIsInError(false);
       setIsSubmitting(true);
 
-      const res =  await uploadImage();
-      const imageId = res.data._id;
+      let imageId;
+      if (image) {
+        const res =  await uploadImage();
+        imageId = res.data._id;
+      } else {
+        imageId = '';
+      }
 
       await API.createRecipe({
         title,
